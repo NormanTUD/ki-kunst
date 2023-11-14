@@ -50,7 +50,8 @@
 							`<img class='print_button' style='display: none' id='print_button_${uuid}' onclick='printPageArea("full_${uuid}_answer")' src='printer.svg' width=50 alt="Drucken" />` + 
 							`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
 							`<div id="response_${uuid}_received" class="message received">${response}</div>` +
-						`</div>`
+						`</div>` +
+						`<br>`
 					);
 
 					var ok = 0;
