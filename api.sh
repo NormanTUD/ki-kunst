@@ -16,9 +16,6 @@ if [[ -z "$ARGUMENT" ]]; then
 	exit 1
 fi
 
-echo "HALLO<br><br>WELT<br>$ARGUMENT<br><br>$ARGUMENT"
-exit 1
-
 curl -s https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $KEY" \
