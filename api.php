@@ -2,6 +2,8 @@
 // Erhalten Sie die übergebene Beschreibung von JavaScript
 $description = $_POST['description'];
 
+$description = preg_replace("/[^a-zA-ZäÄöÖüÜß ]/", " ");
+
 try {
     // Übergeben Sie die Beschreibung an die Shell-Ausführung und speichern Sie die Ausgabe in $output
     $output = shell_exec("bash api.sh " . escapeshellarg($description));
