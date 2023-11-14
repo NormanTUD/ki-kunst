@@ -15,7 +15,27 @@
 		<div id="response"></div>
 
 		<script>
-			function printPageArea(areaID){
+			var currently_awaiting_response = false;
+
+			const delay = (delayInms) => {
+				return new Promise(resolve => setTimeout(resolve, delayInms));
+			};
+
+			async function printPageArea(areaID){
+				var cnt = 0;
+				while (currently_awaiting_response) {
+					if(cnt == 0) {
+						console.log("Currently waiting for response. Printing when response is there...");
+					}
+
+					cnt++;
+					await delay(200);
+				}
+
+				if(cnt) {
+					console.log("Finished waiting for response. Printing now.");
+				}
+
 				var printContent = document.getElementById(areaID).innerHTML;
 				var originalContent = document.body.innerHTML;
 				document.body.innerHTML = printContent;
@@ -30,6 +50,7 @@
 			}
 
 			function call_api() {
+				currently_awaiting_response = true;
 				var uuid = uuidv4();
 				var description = $("#description").val();
 
@@ -79,16 +100,19 @@
 								$("#draw_button").attr("disabled", false);
 
 								$(`#print_button_${uuid}`).show();
+								currently_awaiting_response = false;
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
 								$("#description").attr("disabled", false).focus();
 								$("#draw_button").attr("disabled", false);
+								currently_awaiting_response = false;
 							}
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
 							console.warn("A: Fehler beim API-Aufruf: " + errorThrown);
 							$("#description").attr("disabled", false).focus();
 							$("#draw_button").attr("disabled", false);
+							currently_awaiting_response = false;
 						}
 					});
 
@@ -100,6 +124,7 @@
 						}
 						$("#description").attr("disabled", false).focus();
 						$("#draw_button").attr("disabled", false);
+						currently_awaiting_response = false;
 					}, 2*60000); // 2*60 seconds
 				} catch (error) {
 					console.error("B: Fehler beim API-Aufruf: " + error.message);
