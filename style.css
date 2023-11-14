@@ -69,8 +69,6 @@ svg {
 		display: none !important;
 	}
 
-	@media print {
-		@page { margin: 0; }
-		body { margin: 1.6cm; }
-	}
+	@page { margin: 0; }
+	body { margin: 1.6cm; }
 }
