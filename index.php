@@ -15,10 +15,24 @@
 		<div id="response"></div>
 
 		<script>
-			var response_counter = 0;
+			function printPageArea(areaID){
+				var printContent = document.getElementById(areaID).innerHTML;
+				var originalContent = document.body.innerHTML;
+				document.body.innerHTML = printContent;
+				window.print();
+				document.body.innerHTML = originalContent;
+			}
+
+			function uuidv4() {
+				return "10000000-1000-4000-8000-100000000000".replace(/[018]/g, c =>
+					(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+				);
+			}
+
 			var global_r;
+
 			function call_api() {
-				response_counter++;
+				var uuid = uuidv4();
 				var description = $("#description").val();
 
 				description = description.replace(/<\s*script/, "&lt;script");
@@ -32,15 +46,15 @@
 					var loadingDiv = '<div><img src="loading.gif" alt="Loading"></div>';
 
 					var responseDiv = $(
-						`<div id="response_${response_counter}_sent" class="message sent">${description}</div>` +
-						`<div id="response_${response_counter}_received" class="message received">${response}</div>`
+						`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
+						`<div id="response_${uuid}_received" class="message received">${response}</div>`
 					);
 
 					var ok = 0;
 
 					$("#history").prepend(responseDiv);
 
-					$("#response_" + response_counter + "_received").html(loadingDiv);
+					$(`#response_${uuid}_received`).html(loadingDiv);
 
 					var ajaxRequest = $.ajax({
 						type: "POST",
@@ -59,7 +73,7 @@
 								ok++;
 								console.log(r);
 								global_r = r;
-								$("#response_" + response_counter + "_received").html(r);
+								$(`#response_${uuid}_received`).html(r);
 								$("#description").attr("disabled", false).focus();
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
@@ -78,7 +92,7 @@
 					setTimeout(function () {
 						if(!ok) {
 							ajaxRequest.abort(); // Abort the API call on timeout
-							$("#response_" + response_counter + "_received").html('Fehler: Timeout').css('color', 'red');
+							$(`#response_${uuid}_received`).html('Fehler: Timeout').css('color', 'red');
 						}
 						$("#description").attr("disabled", false).focus();
 						$("#draw_button").attr("disabled", false);
