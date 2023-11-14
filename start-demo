@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while [ 1 ]; do
-	xmodmap -e "keycode 59 = F6"
+	xmodmap -e "keycode 67 = F6"
         xmodmap -e "keycode 70 = F3"
 
         chromium --kiosk https://optimalbliss.de/kunst
