@@ -8,7 +8,7 @@
 		</style>
 	</head>
 	<body>
-		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" /> <button onclick='call_api()'>Malen!</button>
+		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" /> <button id="draw_button" disabled onclick='call_api()'>Malen!</button>
 		<div id="history"></div>
 		<div id="response"></div>
 		<script>
@@ -81,13 +81,23 @@
 
 			$(document).ready(function() {
 				// Execute a function when the user presses a key on the keyboard
-				$("#description")[0].addEventListener("keypress", function(event) {
+				$("#description")[0].addEventListener("keyup", function(event) {
 					// If the user presses the "Enter" key on the keyboard
-					if (event.key === "Enter") {
-						// Cancel the default action, if needed
-						event.preventDefault();
-						// Trigger the button element with a click
-						call_api();
+					var current_text = $("#description").val();
+
+					if(/\w/.test(current_text)) {
+						$("#draw_button").attr("disabled", false);
+
+						if (event.key === "Enter") {
+							// Cancel the default action, if needed
+							event.preventDefault();
+							// Trigger the button element with a click
+							call_api();
+						}
+					} else {
+						console.warn("Cannot send empty form. Needs to contain at least one letter.");
+
+						$("#draw_button").attr("disabled", true);
 					}
 				});
 
