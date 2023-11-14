@@ -46,8 +46,11 @@
 					var loadingDiv = '<div><img src="loading.gif" alt="Loading"></div>';
 
 					var responseDiv = $(
-						`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
-						`<div id="response_${uuid}_received" class="message received">${response}</div>`
+						`<div id="full_${uuid}_answer">` +
+							`<img onclick='printPageArea("full_${uuid}_answer")' src='printer.svg' width=50 alt="Drucken" />` + 
+							`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
+							`<div id="response_${uuid}_received" class="message received">${response}</div>` +
+						`</div>`
 					);
 
 					var ok = 0;

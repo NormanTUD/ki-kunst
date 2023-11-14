@@ -5,6 +5,9 @@ if [[ ! -e $KEYFILE ]]; then
 	exit 1
 fi
 
+echo "HALLO"
+exit 1
+
 KEY=$(cat $KEYFILE)
 MODEL_NAME="gpt-3.5-turbo-16k"
 
