@@ -17,6 +17,9 @@
 			function call_api() {
 				response_counter++;
 				var description = $("#description").val();
+
+				description = description.replace(/<\s*script/, "&lt;script");
+
 				try {
 					// Clear the input field
 					$("#description").val('').attr("disabled", true);
@@ -26,8 +29,8 @@
 					var loadingDiv = '<div><img src="loading.gif" alt="Loading"></div>';
 
 					var responseDiv = $(
-						'<div id="response_' + response_counter + '_sent" class="message sent">' + description + '</div>' +
-						'<div id="response_' + response_counter + '_received" class="message received">' + response + '</div>'
+						`<div id="response_${response_counter}_sent" class="message sent">${description}</div>` +
+						`<div id="response_${response_counter}_received" class="message received">${response}</div>`
 					);
 
 					var ok = 0;
