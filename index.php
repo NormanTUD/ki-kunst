@@ -29,8 +29,6 @@
 				);
 			}
 
-			var global_r;
-
 			function call_api() {
 				var uuid = uuidv4();
 				var description = $("#description").val();
@@ -76,7 +74,6 @@
 								// Create a new div for each question and answer and append it to the history
 								ok++;
 								console.log(r);
-								global_r = r;
 								$(`#response_${uuid}_received`).html(r);
 								$("#description").attr("disabled", false).focus();
 								$("#draw_button").attr("disabled", false);
