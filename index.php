@@ -19,8 +19,7 @@
 				var description = $("#description").val();
 				try {
 					// Clear the input field
-					$("#description").val('');
-					$("#description").attr("disabled", true);
+					$("#description").val('').attr("disabled", true);
 
 					// Display loading animation while waiting for the response
 					var loadingDiv = '<div><img src="loading.gif" alt="Loading"></div>';
