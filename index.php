@@ -132,27 +132,30 @@
 				}
 			}
 
+			function keyuprelease (event) {
+				// If the user presses the "Enter" key on the keyboard
+				var current_text = $("#description").val();
+
+				if(/\w/.test(current_text)) {
+					$("#draw_button").attr("disabled", false);
+
+					if (event.key === "Enter") {
+						// Cancel the default action, if needed
+						event.preventDefault();
+						// Trigger the button element with a click
+						call_api();
+					}
+				} else {
+					console.warn("Cannot send empty form. Needs to contain at least one letter.");
+
+					$("#draw_button").attr("disabled", true);
+				}
+			}
+
 			$(document).ready(function() {
 				// Execute a function when the user presses a key on the keyboard
-				$("#description")[0].addEventListener("keyup", function(event) {
-					// If the user presses the "Enter" key on the keyboard
-					var current_text = $("#description").val();
-
-					if(/\w/.test(current_text)) {
-						$("#draw_button").attr("disabled", false);
-
-						if (event.key === "Enter") {
-							// Cancel the default action, if needed
-							event.preventDefault();
-							// Trigger the button element with a click
-							call_api();
-						}
-					} else {
-						console.warn("Cannot send empty form. Needs to contain at least one letter.");
-
-						$("#draw_button").attr("disabled", true);
-					}
-				});
+				$("#description")[0].addEventListener("keyup", keyuprelease);
+				$("#description")[0].addEventListener("keypress", keyuprelease);
 
 				$("#description").focus();
 			});
