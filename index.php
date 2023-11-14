@@ -78,6 +78,7 @@
 								global_r = r;
 								$(`#response_${uuid}_received`).html(r);
 								$("#description").attr("disabled", false).focus();
+								$("#draw_button").attr("disabled", false);
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
 								$("#description").attr("disabled", false).focus();
