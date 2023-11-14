@@ -20,6 +20,7 @@
 				try {
 					// Clear the input field
 					$("#description").val('').attr("disabled", true);
+					$("#draw_button").attr("disabled", true);
 
 					// Display loading animation while waiting for the response
 					var loadingDiv = '<div><img src="loading.gif" alt="Loading"></div>';
@@ -57,11 +58,13 @@
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
 								$("#description").attr("disabled", false).focus();
+								$("#draw_button").attr("disabled", false);
 							}
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
 							console.warn("A: Fehler beim API-Aufruf: " + errorThrown);
 							$("#description").attr("disabled", false).focus();
+							$("#draw_button").attr("disabled", false);
 						}
 					});
 
@@ -72,6 +75,7 @@
 							$("#response_" + response_counter + "_received").html('Fehler: Timeout').css('color', 'red');
 						}
 						$("#description").attr("disabled", false).focus();
+						$("#draw_button").attr("disabled", false);
 					}, 2*60000); // 2*60 seconds
 				} catch (error) {
 					console.error("B: Fehler beim API-Aufruf: " + error.message);
