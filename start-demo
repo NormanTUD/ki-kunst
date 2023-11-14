@@ -1,0 +1,5 @@
+#!/bin/bash
+
+xmodmap -e "keycode 70 = F3"
+
+chromium --kiosk https://optimalbliss.de/kunst
