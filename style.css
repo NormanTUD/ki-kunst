@@ -60,6 +60,10 @@ svg {
 .full_reply {
 }
 
+.print_button {
+	user-select: none;
+}
+
 @media print {
 	.no-print, .no-print * {
 		display: none !important;
