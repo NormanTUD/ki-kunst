@@ -36,7 +36,6 @@
 .message.received {
 	background: #fff;
 	border-radius: 0px 5px 5px 5px;
-	float: left;
 }
 
 .message.received .metadata {
