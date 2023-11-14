@@ -1,0 +1,3 @@
+<Files "api.sh">  
+	Require all denied
+</Files>
