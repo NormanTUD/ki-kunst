@@ -47,7 +47,7 @@
 
 					var responseDiv = $(
 						`<div id="full_${uuid}_answer">` +
-							`<img onclick='printPageArea("full_${uuid}_answer")' src='printer.svg' width=50 alt="Drucken" />` + 
+							`<img class='print_button' style='display: none' id='print_button_${uuid}' onclick='printPageArea("full_${uuid}_answer")' src='printer.svg' width=50 alt="Drucken" />` + 
 							`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
 							`<div id="response_${uuid}_received" class="message received">${response}</div>` +
 						`</div>`
@@ -79,6 +79,8 @@
 								$(`#response_${uuid}_received`).html(r);
 								$("#description").attr("disabled", false).focus();
 								$("#draw_button").attr("disabled", false);
+
+								$(`#print_button_${uuid}`).show();
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
 								$("#description").attr("disabled", false).focus();

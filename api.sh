@@ -16,7 +16,6 @@ if [[ -z "$ARGUMENT" ]]; then
 	exit 1
 fi
 
-
 echo "HALLO<br><br>WELT<br>$ARGUMENT<br><br>$ARGUMENT"
 exit 1
 
