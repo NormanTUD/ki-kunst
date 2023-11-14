@@ -21,7 +21,7 @@
 				return new Promise(resolve => setTimeout(resolve, delayInms));
 			};
 
-			async function printPageArea(areaID){
+			async function print_page_area(areaID){
 				var cnt = 0;
 				while (currently_awaiting_response) {
 					if(cnt == 0) {
@@ -66,7 +66,7 @@
 
 					var responseDiv = $(
 						`<div class='full_reply' id="full_${uuid}">` +
-							`<img class='print_button' style='display: none' id='print_button_${uuid}' onclick='printPageArea("full_${uuid}")' src='printer.svg' width=50 alt="Drucken" />` + 
+							`<img class='print_button' style='display: none' id='print_button_${uuid}' onclick='print_page_area("full_${uuid}")' src='printer.svg' width=50 alt="Drucken" />` + 
 							`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
 							`<div id="response_${uuid}_received" class="message received">${response}</div>` +
 						`</div>` +
