@@ -8,9 +8,12 @@
 		</style>
 	</head>
 	<body>
-		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" /> <button id="draw_button" disabled onclick='call_api()'>Malen!</button>
+		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" />
+		<button id="draw_button" disabled onclick='call_api()'>Malen!</button>
+
 		<div id="history"></div>
 		<div id="response"></div>
+
 		<script>
 			var response_counter = 0;
 			var global_r;
