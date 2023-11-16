@@ -21,7 +21,8 @@
 
 
 .message.sent {
-	background: #e1ffc7;
+	background-color: #393939;
+	color: #0a0;
 	border-radius: 5px 0px 5px 5px;
 	float: left;
 }
@@ -34,8 +35,9 @@
 }
 
 .message.received {
-	background: #fff;
+	background-color: #191919;
 	border-radius: 0px 5px 5px 5px;
+	color: green;
 }
 
 .message.received .metadata {
