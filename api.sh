@@ -16,6 +16,11 @@ if [[ -z "$ARGUMENT" ]]; then
 	exit 1
 fi
 
+if [[ "$ARGUMENT" == *"DEBUGDEBUGDEBUG"* ]]; then
+	echo "DEBUG OUTPUT"
+	exit 0
+fi
+
 OUTPUT=$(curl -s https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $KEY" \
