@@ -20,7 +20,8 @@
 				<li>Die Sydney-Opera</li>
 				<li>Die Erde aus Sicht eines Außerirdischen</li>
 			</ul>
-			Auch bei gleicher Eingabe ist die Ausgabe nie die Gleiche. Daher: probiere es ruhig mehrfach!
+			Auch bei gleicher Eingabe ist die Ausgabe nie die Gleiche. Daher: probiere es ruhig mehrfach!<br>
+			Schreib einfach, was du gemalt haben möchtest, und drücke Enter, wenn du fertig bist.
 		</div>
 
 		<div id="history"></div>
