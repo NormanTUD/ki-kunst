@@ -13,7 +13,7 @@ try {
 		echo $output;
 	} else {
 		// Keine Ausgabe erhalten
-		echo "Keine Ausgabe von api.sh erhalten.";
+		echo "Keine Ausgabe erhalten. Bitte erneut probieren.";
 	}
 } catch (Exception $e) {
 	// Fehler beim Aufrufen der api.sh oder anderen Ausnahmen
