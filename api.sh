@@ -46,4 +46,4 @@ if [[ "$OUTPUT" == *'"error"'* ]]; then
 	exit 3
 fi
 
-echo $OUTPUT | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##'
+echo $OUTPUT | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##' -e 's#`##g'
