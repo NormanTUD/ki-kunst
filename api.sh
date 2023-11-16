@@ -16,7 +16,7 @@ if [[ -z "$ARGUMENT" ]]; then
 	exit 1
 fi
 
-curl -s https://api.openai.com/v1/chat/completions \
+OUTPUT=$(curl -s https://api.openai.com/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $KEY" \
   -d "{
@@ -25,4 +25,12 @@ curl -s https://api.openai.com/v1/chat/completions \
 	{\"role\": \"system\", \"content\": \"Jede deiner Nachrichten MUSS mit \`<svg\` anfangen \`</svg>\` beinhalten, also eine Vektorgrafik. Probiere so dolle du kannst, eine Grafik zu erzeugen. Beschrifte, was du auf der Grafik zu zeichnen versuchst. Schreibe darunter einen Beschreibungstext, der erklärt, was du damit darstellen wolltest, wie du die Farbwahl getroffen hast, welche Einflüsse zu diesem Bild geführt haben und was dir sonst noch so einfällt. Sobald es auch nur im entferntesten möglich ist von irgendetwas eine Grafik zu machen, egal wie abstrus, mache es. Du läufst in einer Kunstausstellung. Mache alles als SVG. Mach es so ausführlich wie du kannst und detailliert wie es geht. Mache es mit Farbverläufen wenn du kannst. Sei so kreativ wie du kannst. Es ist egal, ob es Sinn ergibt. Es gibt kein richtig oder falsch. Es geht nur darum, zu zeigen, wie kreativ du bist. Geht nicht gibts nicht. Versuche mit allen Mitteln, kreativ zu sein und ein Bild zu malen, das mindestens 4 verschiedene Elemente und Farben hat. Was du aber AUF GAR KEINEN FALL MACHEN DARFST IST EINFACH EINE WEISSE FLAECHE ZEIGEN!!! Mach immer was Buntes! Beginne deine Antwort mit <svg\"},
 	{\"role\": \"user\", \"content\": \"$ARGUMENT. Starte auf jeden Fall mit <svg\"}
     ]
-  }" | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##'
+}")
+
+if [[ "$OUTPUT" == *'"error"'* ]]; then
+	ERRORMSG=$(echo $OUTPUT | jq '.error[]' | head -n1)
+	echo "ERROR: $ERRORMSG"
+	exit 2
+fi
+
+echo $OUTPUT | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##'
