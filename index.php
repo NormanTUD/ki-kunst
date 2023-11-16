@@ -124,8 +124,7 @@
 								r = r + "</pre>";
 
 								// Create a new div for each question and answer and append it to the history
-								ok++;
-								console.log(r);
+								//console.log(r);
 								var splitted = r.split("");
 
 								$(`#response_${uuid}_received`).html("");
@@ -144,6 +143,7 @@
 
 								//$(`#print_button_${uuid}`).show();
 								currently_awaiting_response = false;
+								ok++;
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
 								$("#description").attr("disabled", false).focus();
