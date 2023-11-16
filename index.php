@@ -99,7 +99,7 @@
 								$("#description").attr("disabled", false).focus();
 								$("#draw_button").attr("disabled", false);
 
-								$(`#print_button_${uuid}`).show();
+								//$(`#print_button_${uuid}`).show();
 								currently_awaiting_response = false;
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
