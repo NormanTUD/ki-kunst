@@ -151,7 +151,7 @@
 					setTimeout(function () {
 						if(!ok) {
 							ajaxRequest.abort(); // Abort the API call on timeout
-							$(`#response_${uuid}_received`).html('Fehler: Timeout').css('color', 'red');
+							$(`#response_${uuid}_received`).html('Fehler: Timeout. Bitte erneut probieren.').css('color', 'red');
 						}
 						$("#description").attr("disabled", false).focus();
 						$("#draw_button").attr("disabled", false);
