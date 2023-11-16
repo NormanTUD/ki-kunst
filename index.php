@@ -50,6 +50,20 @@
 				);
 			}
 
+			function rand_between (a, b) {
+				var min = Math.min(a, b);
+				var max = Math.max(a, b);
+
+				if(min == max) {
+					console.error(`rand_between: a and b are equal!`);
+					return 5;
+				} else {
+					var r = Math.floor(Math.random() * max) + min;
+
+					return r;
+				}
+			}
+
 			function call_api() {
 				currently_awaiting_response = true;
 				var uuid = uuidv4();
@@ -90,19 +104,31 @@
 						data: {
 							description: description
 						},
-						success: function (response) {
+						success: async function (response) {
 							try {
 								// Replace newline characters with <br> in the response
 								var r = response.replace(/\\n/g, "\n");
-								r = r.replace("</svg>", "</svg><pre style='white-space: pre-wrap'>");
+								r = r.replace("</svg>", "</svg><pre style='white-space: break-spaces'>");
 								r = r + "</pre>";
 
 								// Create a new div for each question and answer and append it to the history
 								ok++;
 								console.log(r);
+								var splitted = r.split("");
+
+								$(`#response_${uuid}_received`).html("");
+
+								for (var j = 0; j < splitted.length; j++) {
+									$(`#response_${uuid}_received`).append(splitted[j]);
+									if(j % rand_between(20, 40) == 0) {
+										await delay(rand_between(30, 70));
+									}
+								}
+
 								$(`#response_${uuid}_received`).html(r);
 								$("#description").attr("disabled", false).focus();
 								$("#draw_button").attr("disabled", false);
+
 
 								//$(`#print_button_${uuid}`).show();
 								currently_awaiting_response = false;
