@@ -16,7 +16,7 @@
 			<br>
 			Beispiele:
 			<ul>
-				<li>Male mir eine süße animierte Katze</li>
+				<li>Eine süße animierte Katze</li>
 				<li>Die Sydney-Opera</li>
 				<li>Die Erde aus Sicht eines Außerirdischen</li>
 			</ul>
