@@ -6,7 +6,8 @@ if [[ ! -e $KEYFILE ]]; then
 fi
 
 KEY=$(cat $KEYFILE)
-MODEL_NAME="gpt-4"
+#MODEL_NAME="gpt-4"
+MODEL_NAME="gpt-3.5-turbo-16k"
 
 ARGUMENT="$1"
 ARGUMENT=$(echo "$ARGUMENT" | sed -e 's#"##g' | sed -e 's#<<<##g' | sed -e "s#'##g" -e 's#\$##')
