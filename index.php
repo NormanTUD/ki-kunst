@@ -130,6 +130,7 @@
 				} catch (error) {
 					console.error("B: Fehler beim API-Aufruf: " + error.message);
 					$("#description").attr("disabled", false).focus();
+					$("#draw_button").attr("disabled", false);
 				}
 			}
 
