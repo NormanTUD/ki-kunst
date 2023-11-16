@@ -5,6 +5,7 @@
 		<script src="jquery.js"></script>
 		<style>
 			<?php include("style.css"); ?>
+			<?php include("animate.css"); ?>
 		</style>
 	</head>
 	<body>
