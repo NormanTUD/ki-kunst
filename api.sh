@@ -27,10 +27,17 @@ OUTPUT=$(curl -s https://api.openai.com/v1/chat/completions \
     ]
 }")
 
+EXITCODE=$?
+
+if [[ $EXITCODE != "0" ]]; then
+	echo "Curl command failed. Exit-code: $EXITCODE"
+	exit 2
+fi
+
 if [[ "$OUTPUT" == *'"error"'* ]]; then
 	ERRORMSG=$(echo $OUTPUT | jq '.error[]' | head -n1)
 	echo "ERROR: $ERRORMSG"
-	exit 2
+	exit 3
 fi
 
 echo $OUTPUT | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##'
