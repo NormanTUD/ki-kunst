@@ -10,7 +10,6 @@
 	</head>
 	<body>
 		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" />
-		<button id="draw_button" disabled onclick='call_api()'>Malen!</button>
 
 		<div id="examples">
 			<br>
@@ -29,6 +28,7 @@
 
 		<script>
 			var currently_awaiting_response = false;
+			set_currently_awaiting_response(false);
 
 			const delay = (delayInms) => {
 				return new Promise(resolve => setTimeout(resolve, delayInms));
@@ -76,8 +76,17 @@
 				}
 			}
 
+			function set_currently_awaiting_response (val) {
+				val = !!val;
+
+				console.log("Setting currently_awaiting_response to " + val);
+				console.trace();
+
+				currently_awaiting_response = val;
+			}
+
 			function call_api() {
-				currently_awaiting_response = true;
+				set_currently_awaiting_response(true);
 				var uuid = uuidv4();
 				var description = $("#description").val();
 
@@ -90,7 +99,6 @@
 				try {
 					// Clear the input field
 					$("#description").val('').attr("disabled", true);
-					$("#draw_button").attr("disabled", true);
 
 					// Display loading animation while waiting for the response
 					var loadingDiv = '<div><img width=32 src="spinner.svg" alt="Loading"></div>';
@@ -138,24 +146,21 @@
 
 								$(`#response_${uuid}_received`).html(r);
 								$("#description").attr("disabled", false).focus();
-								$("#draw_button").attr("disabled", false);
 
 
 								//$(`#print_button_${uuid}`).show();
-								currently_awaiting_response = false;
+								set_currently_awaiting_response(false);
 								ok++;
 							} catch (error) {
 								console.warn("Fehler beim Hinzufügen zur History: " + error.message);
 								$("#description").attr("disabled", false).focus();
-								$("#draw_button").attr("disabled", false);
-								currently_awaiting_response = false;
+								set_currently_awaiting_response(false);
 							}
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
 							console.warn("Fehler 1 beim API-Aufruf: " + errorThrown);
 							$("#description").attr("disabled", false).focus();
-							$("#draw_button").attr("disabled", false);
-							currently_awaiting_response = false;
+							set_currently_awaiting_response(false);
 						}
 					});
 
@@ -166,13 +171,11 @@
 							$(`#response_${uuid}_received`).html('Fehler: Timeout. Bitte erneut probieren.').css('color', 'red');
 						}
 						$("#description").attr("disabled", false).focus();
-						$("#draw_button").attr("disabled", false);
-						currently_awaiting_response = false;
+						set_currently_awaiting_response(false);
 					}, 2*60000); // 2*60 seconds
 				} catch (error) {
 					console.error("Fehler 2 beim API-Aufruf: " + error.message);
 					$("#description").attr("disabled", false).focus();
-					$("#draw_button").attr("disabled", false);
 				}
 			}
 
@@ -181,16 +184,12 @@
 				var current_text = $("#description").val();
 
 				if(/\w.*\w/.test(current_text)) {
-					$("#draw_button").attr("disabled", false);
-
 					if (event.key === "Enter") {
 						// Cancel the default action, if needed
 						event.preventDefault();
 						// Trigger the button element with a click
 						call_api();
 					}
-				} else {
-					$("#draw_button").attr("disabled", true);
 				}
 			}
 
