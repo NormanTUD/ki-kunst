@@ -50,7 +50,24 @@
 }
 
 body {
-	background-color: #cacaca;
+	background-color: black;
+}
+
+::placeholder {
+	color: green;
+	opacity: 1; /* Firefox */
+}
+
+#description {
+	background-color: black;
+	border-color: green;
+	color: green;
+}
+
+#draw_button {
+	background-color: green;
+	border-radius: 5px;
+	border-color: green;
 }
 
 svg {
