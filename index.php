@@ -57,6 +57,10 @@
 
 				description = description.replace(/<\s*script/, "&lt;script");
 
+				if(/^\s*$/.test(description)) {
+					return;
+				}
+
 				try {
 					// Clear the input field
 					$("#description").val('').attr("disabled", true);
@@ -110,7 +114,7 @@
 							}
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
-							console.warn("A: Fehler beim API-Aufruf: " + errorThrown);
+							console.warn("Fehler 1 beim API-Aufruf: " + errorThrown);
 							$("#description").attr("disabled", false).focus();
 							$("#draw_button").attr("disabled", false);
 							currently_awaiting_response = false;
@@ -128,7 +132,7 @@
 						currently_awaiting_response = false;
 					}, 2*60000); // 2*60 seconds
 				} catch (error) {
-					console.error("B: Fehler beim API-Aufruf: " + error.message);
+					console.error("Fehler 2 beim API-Aufruf: " + error.message);
 					$("#description").attr("disabled", false).focus();
 					$("#draw_button").attr("disabled", false);
 				}

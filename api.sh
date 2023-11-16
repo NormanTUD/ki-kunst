@@ -13,7 +13,7 @@ ARGUMENT="$1"
 ARGUMENT=$(echo "$ARGUMENT" | sed -e 's#"##g' | sed -e 's#<<<##g' | sed -e "s#'##g" -e 's#\$##')
 
 if [[ -z "$ARGUMENT" ]]; then
-	echo "Empty argument!";
+	echo "Kein Text angegeben!";
 	exit 1
 fi
 
