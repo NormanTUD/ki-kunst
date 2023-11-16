@@ -79,10 +79,12 @@
 			function set_currently_awaiting_response (val) {
 				val = !!val;
 
-				console.log("Setting currently_awaiting_response to " + val);
-				console.trace();
+				if(val != currently_awaiting_response) {
+					console.log("Setting currently_awaiting_response to " + val);
+					console.trace();
 
-				currently_awaiting_response = val;
+					currently_awaiting_response = val;
+				}
 			}
 
 			function call_api() {
