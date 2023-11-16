@@ -12,6 +12,17 @@
 		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" />
 		<button id="draw_button" disabled onclick='call_api()'>Malen!</button>
 
+		<div id="examples">
+			<br>
+			Beispiele:
+			<ul>
+				<li>Male mir eine süße animierte Katze</li>
+				<li>Die Sydney-Opera</li>
+				<li>Die Erde aus Sicht eines Außerirdischen</li>
+			</ul>
+			Auch bei gleicher Eingabe ist die Ausgabe nie die Gleiche. Daher: probiere es ruhig mehrfach!
+		</div>
+
 		<div id="history"></div>
 		<div id="response"></div>
 
