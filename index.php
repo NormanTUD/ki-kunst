@@ -67,7 +67,7 @@
 					$("#draw_button").attr("disabled", true);
 
 					// Display loading animation while waiting for the response
-					var loadingDiv = '<div><img src="loading.gif" alt="Loading"></div>';
+					var loadingDiv = '<div><img width=32 src="cupertino_activity_indicator_selective.gif" alt="Loading"></div>';
 
 					var responseDiv = $(
 						`<div class='full_reply' id="full_${uuid}">` +
@@ -142,7 +142,7 @@
 				// If the user presses the "Enter" key on the keyboard
 				var current_text = $("#description").val();
 
-				if(/\w/.test(current_text)) {
+				if(/\w.*\w/.test(current_text)) {
 					$("#draw_button").attr("disabled", false);
 
 					if (event.key === "Enter") {
@@ -152,8 +152,6 @@
 						call_api();
 					}
 				} else {
-					console.warn("Cannot send empty form. Needs to contain at least one letter.");
-
 					$("#draw_button").attr("disabled", true);
 				}
 			}
