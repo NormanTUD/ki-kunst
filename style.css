@@ -80,6 +80,7 @@ svg {
 
 .full_reply {
 	font-family: monospace;
+	user-select: none;
 }
 
 .print_button {

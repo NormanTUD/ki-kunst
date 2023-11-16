@@ -163,6 +163,23 @@
 
 				$("#description").focus();
 			});
+
+			function checkFocus() {
+				setInterval(() => {
+					try {
+						const descriptionField = document.getElementById('description');
+
+						if (document.activeElement !== descriptionField && !descriptionField.disabled) {
+							descriptionField.focus();
+						}
+					} catch (error) {
+						console.warn(`Error in checkFocus function: ${error.message}`);
+					}
+				}, 50);
+			}
+
+			// Start checking focus
+			checkFocus();
 		</script>
 	</body>
 </html>
