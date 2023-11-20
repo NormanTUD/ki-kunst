@@ -17,6 +17,8 @@ MODEL_NAME="gpt-3.5-turbo-16k"
 ARGUMENT="$1"
 ARGUMENT=$(echo "$ARGUMENT" | sed -e 's#"##g' | sed -e 's#<<<##g' | sed -e "s#'##g" -e 's#\$##')
 
+echo "$ARGUMENT" > $logdir/input.txt
+
 if [[ -z "$ARGUMENT" ]]; then
 	echo "Kein Text angegeben!";
 	exit 1
@@ -55,9 +57,11 @@ fi
 
 if [[ "$DEBUG_ONLY" -eq "1" ]]; then
 	echo "$OUTPUT"
+	echo "$OUTPUT" > $logdir/output.txt
 else
-	echo "$OUTPUT" | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##' -e 's#`##g'
+	PARSED=$(echo "$OUTPUT" | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##' -e 's#`##g')
+
+	echo $PARSED
+	echo "$PARSED" > $logdir/output.txt
 fi
 
-echo "$ARGUMENT" > $logdir/input.txt
-echo "$OUTPUT" > $logdir/output.txt
