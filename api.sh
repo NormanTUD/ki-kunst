@@ -73,4 +73,3 @@ else
 	echo "$PARSED"
 	echo "$PARSED" > $logdir/output.txt
 fi
-
