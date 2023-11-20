@@ -1,4 +1,6 @@
 <?php
+setlocale(LC_CTYPE, "en_US.UTF-8"); // ohne entfernt escapeshellarg umlaute usw.
+
 // Erhalten Sie die übergebene Beschreibung von JavaScript
 $description = $_POST['description'];
 
