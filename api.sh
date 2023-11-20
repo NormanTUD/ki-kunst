@@ -1,3 +1,7 @@
+#!/bin/bash
+
+set -e
+
 if ! command -v uuidgen 2>/dev/null > /dev/null; then
 	echo "Cannot continue. uuidgen not found. Run 'apt-get install uuid-runtime' on the server to fix this."
 	exit 4
