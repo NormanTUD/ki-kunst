@@ -1,3 +1,8 @@
+if ! command -v uuidgen 2>/dev/null > /dev/null; then
+	echo "Cannot continue. uuidgen not found. Run 'apt-get install uuid-runtime' on the server to fix this."
+	exit 4
+fi
+
 KEYFILE=/etc/openai_api
 
 if [[ ! -e $KEYFILE ]]; then
@@ -61,7 +66,7 @@ if [[ "$DEBUG_ONLY" -eq "1" ]]; then
 else
 	PARSED=$(echo "$OUTPUT" | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##' -e 's#`##g')
 
-	echo $PARSED
+	echo "$PARSED"
 	echo "$PARSED" > $logdir/output.txt
 fi
 
