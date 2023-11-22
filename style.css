@@ -110,10 +110,10 @@ svg {
 
 	@page {
 		margin: 0;
-		color: black;
 	}
 
 	body {
 		margin: 1.6cm;
+		color: black;
 	}
 }
