@@ -150,7 +150,7 @@
 								$("#description").attr("disabled", false).focus();
 
 
-								//$(`#print_button_${uuid}`).show();
+								$(`#print_button_${uuid}`).show();
 								set_currently_awaiting_response(false);
 								ok++;
 							} catch (error) {
