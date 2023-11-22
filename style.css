@@ -103,6 +103,10 @@ svg {
 	user-select: none;
 }
 
+#examples {
+	user-select: none;
+}
+
 @media print {
 	.no-print, .no-print * {
 		display: none !important;
@@ -114,10 +118,22 @@ svg {
 
 	body {
 		margin: 1.6cm;
+		text-shadow: 0 0 0 #fff, 0 0 0px #fff;
 		color: black;
 	}
-}
 
-#examples {
-	user-select: none;
+	.message.sent {
+		background-color: #393939;
+		color: black;
+		border-radius: 5px 0px 5px 5px;
+		float: left;
+		white-space: break-spaces;
+	}
+
+	.message.received {
+		background-color: #191919;
+		border-radius: 0px 5px 5px 5px;
+		color: black;
+		white-space: break-spaces;
+	}
 }
