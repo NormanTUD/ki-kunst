@@ -204,6 +204,11 @@
 			});
 
 			function type (e) {
+				if($("#description").prop('disabled')) {
+					console.warn(`Description field is currently disabled`);
+					return;
+				}
+
 				if(e.key == "Enter") {
 					var current_text = $("#description").val();
 
