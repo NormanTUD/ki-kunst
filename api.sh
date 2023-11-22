@@ -38,6 +38,10 @@ if [[ "$ARGUMENT" == *"DEBUGDEBUGDEBUG"* ]]; then
 	DEBUG_ONLY=1
 elif [[ -e "logs/$ARGUMENT/output.txt" ]]; then
 	OUTPUT=$(cat "logs/$ARGUMENT/output.txt")
+
+	if ! grep completion_tokens "logs/$ARGUMENT/output.txt" 2>/dev/null >/dev/null; then
+		DEBUG_ONLY=1
+	fi
 else
 	echo "$ARGUMENT" > $logdir/input.txt
 
