@@ -15,9 +15,9 @@
 			<br>
 			Beispiele:
 			<ul>
-				<li>Eine süße animierte Katze</li>
+				<li>Eine süße Katze</li>
 				<li>Die Sydney-Opera</li>
-				<li>Die Erde aus Sicht eines Außerirdischen</li>
+				<li>Die Erde</li>
 			</ul>
 			Auch bei gleicher Eingabe ist die Ausgabe nie die Gleiche. Daher: probiere es ruhig mehrfach!<br>
 			Fang einfach an das zu tippen, was du gemalt haben möchtest, und drücke Enter, wenn du fertig bist.
