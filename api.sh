@@ -36,6 +36,12 @@ DEBUG_ONLY=0
 if [[ "$ARGUMENT" == *"DEBUGDEBUGDEBUG"* ]]; then
 	OUTPUT="DEBUG OUTPUT"
 	DEBUG_ONLY=1
+elif [[ -e "logs/$ARGUMENT/output.html" ]]; then
+	OUTPUT=$(cat "logs/$ARGUMENT/output.html")
+
+	if ! grep completion_tokens "logs/$ARGUMENT/output.html" 2>/dev/null >/dev/null; then
+		DEBUG_ONLY=1
+	fi
 elif [[ -e "logs/$ARGUMENT/output.txt" ]]; then
 	OUTPUT=$(cat "logs/$ARGUMENT/output.txt")
 
@@ -72,10 +78,10 @@ fi
 
 if [[ "$DEBUG_ONLY" -eq "1" ]]; then
 	echo "$OUTPUT"
-	echo "$OUTPUT" > $logdir/output.txt
+	echo "$OUTPUT" > $logdir/output.html
 else
 	PARSED=$(echo "$OUTPUT" | jq '.choices[]'.message.content | sed -e 's/\\\"/\"/g' -e 's/^.//g' -e 's/.$//g' -e 's#\\\\n##' -e 's#`##g')
 
 	echo "$PARSED"
-	echo "$PARSED" > $logdir/output.txt
+	echo "$PARSED" > $logdir/output.html
 fi
