@@ -107,7 +107,7 @@
 					$("#description").val('').attr("disabled", true);
 
 					// Display loading animation while waiting for the response
-					var loadingDiv = '<div><img width=32 src="spinner.svg" alt="Loading"></div>';
+					var loadingDiv = `<div><img width='64' src="spinner.svg" alt="Loading"></div>`;
 
 					var responseDiv = $(
 						`<div class='full_reply' id="full_${uuid}">` +
