@@ -185,25 +185,7 @@
 				}
 			}
 
-			function keyuprelease (event) {
-				// If the user presses the "Enter" key on the keyboard
-				var current_text = $("#description").val();
-
-				if(/\w.*\w/.test(current_text)) {
-					if (event.key === "Enter") {
-						// Cancel the default action, if needed
-						event.preventDefault();
-						// Trigger the button element with a click
-						call_api();
-					}
-				}
-			}
-
 			$(document).ready(function() {
-				// Execute a function when the user presses a key on the keyboard
-				$("#description")[0].addEventListener("keyup", keyuprelease);
-				$("#description")[0].addEventListener("keypress", keyuprelease);
-
 				$("#description").focus();
 			});
 
