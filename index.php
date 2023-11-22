@@ -27,6 +27,8 @@
 		<div id="response"></div>
 
 		<script>
+			var print_queue = [];
+
 			function log(...args) {
 				console.log(...args);
 			}
@@ -40,6 +42,13 @@
 
 			async function print_page_area(areaID){
 				var cnt = 0;
+				if(print_queue.includes(areaID)) {
+					log("Already in print queue. Not printing again.");
+					return;
+				}
+
+				print_queue.push(areaID);
+
 				while (currently_awaiting_response) {
 					if(cnt == 0) {
 						console.log("Currently waiting for response. Printing when response is there...");
@@ -58,6 +67,11 @@
 				document.body.innerHTML = printContent;
 				window.print();
 				document.body.innerHTML = originalContent;
+
+				var index = print_queue.indexOf(areaID);
+				if (index !== -1) {
+					print_queue.splice(index, 1);
+				}
 			}
 
 			function uuidv4() {
