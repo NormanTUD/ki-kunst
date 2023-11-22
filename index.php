@@ -27,6 +27,10 @@
 		<div id="response"></div>
 
 		<script>
+			function log(...args) {
+				console.log(...args);
+			}
+
 			var currently_awaiting_response = false;
 			set_currently_awaiting_response(false);
 
@@ -202,6 +206,23 @@
 
 				$("#description").focus();
 			});
+
+			function type (e) {
+				if(e.key == "Enter") {
+					var current_text = $("#description").val();
+
+					if(/\w.*\w/.test(current_text)) {
+						call_api();
+						$("#description").val();
+					}
+				} else {
+					if(!$("#description").is(":focus")) {
+						$("#description").val($("#description").val() + e.key).focus();
+					}
+				}
+			}
+
+			document.body.addEventListener('keypress', type);
 		</script>
 	</body>
 </html>
