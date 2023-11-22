@@ -4,7 +4,7 @@ setlocale(LC_CTYPE, "en_US.UTF-8"); // ohne entfernt escapeshellarg umlaute usw.
 // Erhalten Sie die übergebene Beschreibung von JavaScript
 $description = $_POST['description'];
 
-$description = preg_replace("/[^a-zA-ZäÄöÖüÜß]/", " ", $description);
+$description = preg_replace("/[^a-zA-ZäÄöÖüÜß0-9-]/", " ", $description);
 
 try {
 	// Übergeben Sie die Beschreibung an die Shell-Ausführung und speichern Sie die Ausgabe in $output

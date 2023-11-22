@@ -26,8 +26,6 @@ MODEL_NAME="gpt-3.5-turbo-16k"
 ARGUMENT="$1"
 ARGUMENT=$(echo "$ARGUMENT" | sed -e 's#"##g' | sed -e 's#<<<##g' | sed -e "s#'##g" -e 's#\$##')
 
-echo "$ARGUMENT" > $logdir/input.txt
-
 if [[ -z "$ARGUMENT" ]]; then
 	echo "Kein Text angegeben!";
 	exit 1
@@ -38,7 +36,11 @@ DEBUG_ONLY=0
 if [[ "$ARGUMENT" == *"DEBUGDEBUGDEBUG"* ]]; then
 	OUTPUT="DEBUG OUTPUT"
 	DEBUG_ONLY=1
+elif [[ -e "logs/$ARGUMENT/output.txt" ]]; then
+	OUTPUT=$(cat "logs/$ARGUMENT/output.txt")
 else
+	echo "$ARGUMENT" > $logdir/input.txt
+
 	OUTPUT=$(curl -s https://api.openai.com/v1/chat/completions \
 	  -H "Content-Type: application/json" \
 	  -H "Authorization: Bearer $KEY" \
