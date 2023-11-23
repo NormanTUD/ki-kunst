@@ -172,7 +172,7 @@ function call_api() {
 			}
 			$("#description").attr("disabled", false).focus();
 			set_currently_awaiting_response(false);
-		}, 3*60000); // 3*60 seconds
+		}, 4*60000); // 4*60 seconds
 	} catch (error) {
 		console.error("Fehler 2 beim API-Aufruf: " + error.message);
 		$("#description").attr("disabled", false).focus();
