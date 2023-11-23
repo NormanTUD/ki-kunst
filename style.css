@@ -76,12 +76,14 @@ body {
 	text-shadow: 0 0 5px #003300;
 	color: green;
 	opacity: 1; /* Firefox */
+	font-size: 32px;
 }
 
 #description {
 	background-color: black;
 	border-color: green;
 	color: green;
+	height: 50px;
 }
 
 #draw_button {
