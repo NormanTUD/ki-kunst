@@ -138,8 +138,7 @@
 							`<img class='no-print print_button' style='display: none' id='print_button_${uuid}' onclick='print_page_area("full_${uuid}")' src='printer.svg' width=50 alt="Drucken" />` + 
 							`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
 							`<div id="response_${uuid}_received" class="message received">${response}</div>` +
-						`</div>` +
-						`<br>`
+						`<br></div>`
 					);
 
 					var ok = 0;
@@ -186,11 +185,15 @@
 								$("#description").attr("disabled", false).focus();
 								set_currently_awaiting_response(false);
 							}
+
+							remove_old_answers();
 						},
 						error: function (jqXHR, textStatus, errorThrown) {
 							console.warn("Fehler 1 beim API-Aufruf: " + errorThrown);
 							$("#description").attr("disabled", false).focus();
 							set_currently_awaiting_response(false);
+
+							remove_old_answers();
 						}
 					});
 
@@ -249,6 +252,12 @@
 			}
 
 			setTimeout(refresh, 10000);
+
+			function remove_old_answers () {
+				var allFullReplies = $(".full_reply");
+				var first10FullReplies = allFullReplies.slice(0, 10);
+				allFullReplies.not(first10FullReplies).remove();
+			}
 		</script>
 	</body>
 </html>
