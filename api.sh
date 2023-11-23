@@ -27,7 +27,7 @@ ARGUMENT="$1"
 ARGUMENT=$(echo "$ARGUMENT" | sed -e 's#"##g' | sed -e 's#<<<##g' | sed -e "s#'##g" -e 's#\$##')
 
 if [[ -z "$ARGUMENT" ]]; then
-	echo "Kein Text angegeben!";
+	echo "Kein Argument angegeben!";
 	exit 1
 fi
 

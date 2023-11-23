@@ -6,9 +6,11 @@ $description = $_POST['description'];
 
 $description = preg_replace("/[^a-zA-ZäÄöÖüÜß0-9-\.]/", " ", $description);
 
+$description = escapeshellarg($description);
+
 try {
 	// Übergeben Sie die Beschreibung an die Shell-Ausführung und speichern Sie die Ausgabe in $output
-	$output = shell_exec("bash api.sh " . escapeshellarg($description));
+	$output = shell_exec("bash api.sh " . $description);
 
 	if ($output !== null) {
 		// Senden Sie die Ausgabe zurück an JavaScript
