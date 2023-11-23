@@ -3,7 +3,6 @@
        	TODO:
 
 	QR-Code-Download
-	Nur 10 Antworten anzeigen
 	*/
 ?>
 <!DOCTYPE html>
