@@ -13,6 +13,8 @@ move_mouse_randomly() {
 			4) xdotool mousemove_relative -- 1 0 ;;  # Move right
 		esac
 
+		xset s reset
+
 		sleep 30
 	done
 }
