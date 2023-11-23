@@ -1,10 +1,3 @@
-<?php
-	/*
-       	TODO:
-
-	QR-Code-Download
-	*/
-?>
 <!DOCTYPE html>
 <html>
 	<head>
