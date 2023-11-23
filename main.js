@@ -198,13 +198,15 @@ function keytype (e) {
 		}
 
 	} else if(e.key == "Backspace") {
-		let descriptionField = document.querySelector("#description");
-		if (descriptionField.value.length > 0) {
-			// Letztes Zeichen entfernen
-			descriptionField.value = descriptionField.value.slice(0, -1);
-		}
+		if(!$("#description").is(":focus")) {
+			let descriptionField = document.querySelector("#description");
+			if (descriptionField.value.length > 0) {
+				// Letztes Zeichen entfernen
+				descriptionField.value = descriptionField.value.slice(0, -1);
+			}
 
-		$(descriptionField).focus();
+			$(descriptionField).focus();
+		}
 	} else {
 		if(!$("#description").is(":focus")) {
 			if(/^\w$/.test(e.key)) {
