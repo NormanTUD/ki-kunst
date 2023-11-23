@@ -183,7 +183,7 @@ $(document).ready(function() {
 	$("#description").focus();
 });
 
-function type (e) {
+function keytype (e) {
 	if($("#description").prop('disabled')) {
 		console.warn(`Description field is currently disabled`);
 		return;
@@ -196,17 +196,30 @@ function type (e) {
 			call_api();
 			$("#description").val();
 		}
+
+	} else if(e.key == "Backspace") {
+		let descriptionField = document.querySelector("#description");
+		if (descriptionField.value.length > 0) {
+			// Letztes Zeichen entfernen
+			descriptionField.value = descriptionField.value.slice(0, -1);
+		}
+
+		$(descriptionField).focus();
 	} else {
 		if(!$("#description").is(":focus")) {
-			$("#description").val($("#description").val() + e.key).focus();
+			if(/^\w$/.test(e.key)) {
+				$("#description").val($("#description").val() + e.key).focus();
+			} else {
+				$("#description").focus();
+			}
 		}
 	}
 }
 
-document.body.addEventListener('keypress', type);
+document.body.addEventListener('keyup', keytype);
 
 var time = new Date().getTime();
-$(document.body).bind("keypress", function(e) {
+$(document.body).bind("keypress keyup", function(e) {
 	time = new Date().getTime();
 });
 
