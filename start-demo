@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if ! command -v xdotool 2>/dev/null >/dev/null; then echo "xdotool not found. Install it"; fi
+if ! command -v chromium 2>/dev/null >/dev/null; then echo "chromium not found. Install it"; fi
+if ! command -v xmodmap 2>/dev/null >/dev/null; then echo "xmodmap not found. Install it"; fi
+if ! command -v xset 2>/dev/null >/dev/null; then echo "xset not found. Install it"; fi
+if ! command -v xprintidle 2>/dev/null >/dev/null; then echo "xprintidle not found. Install it"; fi
+
 move_mouse_randomly() {
 	while true; do
 		echo "Moving mouse"
