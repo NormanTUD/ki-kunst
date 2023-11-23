@@ -82,6 +82,7 @@ body {
 #description {
 	background-color: black;
 	border-color: green;
+	font-size: 30px;
 	color: green;
 	height: 50px;
 }
