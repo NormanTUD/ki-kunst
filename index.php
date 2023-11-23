@@ -10,10 +10,8 @@
 	<head>
 		<title>Ausstellung</title>
 		<script src="jquery.js"></script>
-		<style>
-			<?php include("style.css"); ?>
-			<?php include("animate.css"); ?>
-		</style>
+		<link rel="stylesheet" href="style.css">
+		<link rel="stylesheet" href="animate.css">
 	</head>
 	<body>
 		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" />
