@@ -8,24 +8,30 @@ if ! command -v xprintidle 2>/dev/null >/dev/null; then echo "xprintidle not fou
 
 move_mouse_randomly() {
 	while true; do
-		echo "Moving mouse"
+		idle_time=$(xprintidle)
 		# Generate a random number between 1 and 4 to determine the direction
-		direction=$((1 + RANDOM % 4))
 
-		case $direction in
-			1) xdotool mousemove_relative -- 1 0 ;;  # Move left
-			2) xdotool mousemove_relative -- 0 1 ;;  # Move down
-			3) xdotool mousemove_relative -- 0 -1 ;; # Move up
-			4) xdotool mousemove_relative -- 1 0 ;;  # Move right
-		esac
+		if ((idle_time > 60000)); then
+			direction=$((1 + RANDOM % 4))
 
-		xset s reset
+			case $direction in
+				1) xdotool mousemove_relative -- 1 0 ;;  # Move left
+				2) xdotool mousemove_relative -- 0 1 ;;  # Move down
+				3) xdotool mousemove_relative -- 0 -1 ;; # Move up
+				4) xdotool mousemove_relative -- 1 0 ;;  # Move right
+			esac
+
+			xset s reset
+		fi
 
 		sleep 30
 	done
 }
 
 move_mouse_randomly &
+
+wait
+exit 1
 
 xset dpms 0 0 0
 xset s noblank
