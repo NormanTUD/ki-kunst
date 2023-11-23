@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="animate.css">
 	</head>
 	<body>
-		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll" />
+		<input style="width: 80%" id="description" value="" placeholder="Beschreibe hier, was chatGPT malen soll. Tippe einfach los" />
 
 		<div id="examples">
 			<br>
