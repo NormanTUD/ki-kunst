@@ -138,7 +138,8 @@
 							`<img class='no-print print_button' style='display: none' id='print_button_${uuid}' onclick='print_page_area("full_${uuid}")' src='printer.svg' width=50 alt="Drucken" />` + 
 							`<div id="response_${uuid}_sent" class="message sent">${description}</div>` +
 							`<div id="response_${uuid}_received" class="message received">${response}</div>` +
-						`<br></div>`
+							`<br>` + 
+						`</div>`
 					);
 
 					var ok = 0;
