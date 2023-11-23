@@ -77,9 +77,6 @@ function set_currently_awaiting_response (val) {
 	val = !!val;
 
 	if(val != currently_awaiting_response) {
-		log("Setting currently_awaiting_response to " + val);
-		console.trace();
-
 		currently_awaiting_response = val;
 	}
 }
