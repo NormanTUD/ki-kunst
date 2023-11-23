@@ -20,7 +20,9 @@
 				<li>Die Erde</li>
 			</ul>
 			Auch bei gleicher Eingabe ist die Ausgabe nie die Gleiche. Daher: probiere es ruhig mehrfach!<br>
-			Fang einfach an das zu tippen, was du gemalt haben möchtest, und drücke Enter, wenn du fertig bist.
+			Fang einfach an das zu tippen, was du gemalt haben möchtest, und drücke Enter, wenn du fertig bist.<br>
+			Die Berechnung der Antwort dauert ca. 1-3 Minuten.<br>
+			Klicke auf das Drucker-Symbol, um die Antwort auszudrucken.
 		</div>
 
 		<div id="history"></div>
