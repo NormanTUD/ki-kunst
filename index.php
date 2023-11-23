@@ -22,7 +22,7 @@
 			<ul>
 				<li>Eine süße Katze</li>
 				<li>Die Sydney-Opera</li>
-				<li>Ein animiertes Logo, das für für universellen Frieden steht</li>
+				<li>Ein animiertes Logo, das für universellen Frieden steht</li>
 			</ul>
 			Auch bei gleicher Eingabe ist die Ausgabe nie die Gleiche. Daher: probiere es ruhig mehrfach!<br>
 			Fang einfach an das zu tippen, was du gemalt haben möchtest, und drücke Enter, wenn du fertig bist.<br>
