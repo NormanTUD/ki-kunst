@@ -1,5 +1,9 @@
 #!/bin/bash
 
+xset s off
+xset s noblank
+xset -dpms
+
 while [ 1 ]; do
 	xmodmap -e "keycode 67 = F6"
         xmodmap -e "keycode 70 = F3"
