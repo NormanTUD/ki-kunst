@@ -38,6 +38,14 @@
 		<script>
 			var print_queue = [];
 
+			function error(...args) {
+				console.error(...args);
+			}
+
+			function warn(...args) {
+				console.warn(...args);
+			}
+
 			function log(...args) {
 				console.log(...args);
 			}
@@ -60,7 +68,7 @@
 
 				while (currently_awaiting_response) {
 					if(cnt == 0) {
-						console.log("Currently waiting for response. Printing when response is there...");
+						log("Currently waiting for response. Printing when response is there...");
 					}
 
 					cnt++;
@@ -68,7 +76,7 @@
 				}
 
 				if(cnt) {
-					console.log("Finished waiting for response. Printing now.");
+					log("Finished waiting for response. Printing now.");
 				}
 
 				var printContent = document.getElementById(areaID).innerHTML;
@@ -107,7 +115,7 @@
 				val = !!val;
 
 				if(val != currently_awaiting_response) {
-					console.log("Setting currently_awaiting_response to " + val);
+					log("Setting currently_awaiting_response to " + val);
 					console.trace();
 
 					currently_awaiting_response = val;
@@ -161,7 +169,7 @@
 								r = r + "</pre>";
 
 								// Create a new div for each question and answer and append it to the history
-								//console.log(r);
+								//log(r);
 								var splitted = r.split("");
 
 								$(`#response_${uuid}_received`).html("");
