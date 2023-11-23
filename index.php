@@ -4,6 +4,7 @@
 
 	QR-Code-Download
 	Nur 10 Antworten anzeigen
+	5 min Inaktivität -> Reload
 	 */
 ?>
 <!DOCTYPE html>
