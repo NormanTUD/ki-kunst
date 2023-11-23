@@ -10,6 +10,7 @@
 	<head>
 		<title>Ausstellung</title>
 		<script src="jquery.js"></script>
+		<script src="html2canvas.min.js"></script>
 		<style>
 			<?php include("style.css"); ?>
 			<?php include("animate.css"); ?>
