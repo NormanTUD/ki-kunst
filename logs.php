@@ -46,12 +46,20 @@ foreach ($subfolders as $subfolder) {
 	$inputPath = $directory . '/' . $subfolder . '/input.txt';
 	$outputPath = $directory . '/' . $subfolder . '/output.html';
 
+	if(!file_exists($outputPath)) {
+		$outputPath = $directory . '/' . $subfolder . '/output.txt';
+	}
+
+	if(!file_exists($outputPath) || !file_exists($inputPath)) {
+		continue;
+	}
+
 	$inputContent = readContent($inputPath);
 	$outputContent = readContent($outputPath);
 
 	if(!preg_match("/DEBUG/", $outputContent) && !preg_match("/DEBUG/", $inputContent)) {
-		echo '<div class="input">' . $inputContent . '</div>';
-		echo '<div class="output">' . $outputContent . '</div>';
+		echo '<div class="message sent">' . $inputContent . '</div>';
+		echo '<div class="message received">' . $outputContent . '</div>';
 	}
 }
 
